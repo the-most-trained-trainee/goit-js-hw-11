@@ -1,2 +1,54 @@
 @import './common';
 @import './example';
+
+header {
+    background-color: rgb(2, 83, 159);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.gallery {
+    width: 1200px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid green;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.photo-card > img {
+    max-width: 100%;
+}
+
+.photo-card {
+    border: 1px solid red;
+    display: inline-block;
+    width: 24%;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.load-more {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
