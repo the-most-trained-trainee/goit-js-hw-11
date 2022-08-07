@@ -17,6 +17,7 @@ loadMoreButton.addEventListener("click", fetchArticles);
 function onSubmit(event) {
   event.preventDefault();
   galleryPart.innerHTML = "";
+  loadMoreButton.style.display = "none";
   fetchMaker.resetPage();
   fetchMaker.request = searchInput.value;
   fetchArticles();
@@ -74,14 +75,12 @@ function photosCounter(initialData) {
   if (currentPage === 1 && maxPageNumber > 1) {
     loadMoreButton.style.display = "block";
   }
-
   if (currentPage === 1 && totalHits > 0) {
     Notify.success(`Hooray! We found ${totalHits} images.`)
   } else if (currentPage === 1 && totalHits === 0) {
     loadMoreButton.style.display = "none";
     Notify.failure("Sorry, there are no images matching your search query. Please try again.")
   }
-
   if (currentPage >= maxPageNumber && totalHits > cardsNumber) {
     loadMoreButton.style.display = "none";
     Notify.info("We're sorry, but you've reached the end of search results.")
