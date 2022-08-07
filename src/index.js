@@ -33,7 +33,7 @@ function cardBuilder(photoSet) {
   photoSet.hits.forEach(photo => {
     galleryToInput = galleryToInput + `
     <div class="photo-card">
-      <div>
+      <div class="photo-frame">
         <a href="${photo.largeImageURL}" class="gallery__link">
           <img src="${photo.webformatURL}" alt="" loading="lazy" class="gallery__image" />    
         </a>
