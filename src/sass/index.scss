@@ -62,11 +62,15 @@ header {
 .photo-card {
     display: inline-block;
     width: 24%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 3px;
+    height: 100%;
 }
 
 .info {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin-top: 10px;
     margin-left: 5px;
     margin-right: 5px;
     font-size: 12px;
@@ -81,9 +85,40 @@ header {
     line-height: .7;
 }
 
+.default-button {
+    background-color: rgb(2, 83, 159);
+    border-radius: 3px;
+    border: solid #ffffff 2px;
+    p {
+        font-family: 'Roboto'; 
+        text-align: center;
+        font-size: 22px;
+        color: rgb(255, 255, 255);
+        margin: 3px 10px;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+}
+
 .load-more {
-    display: block;
+    background-color: rgb(2, 83, 159);
+    p {
+        font-family: 'Roboto'; 
+        text-align: center;
+        font-size: 22px;
+        color: rgb(255, 255, 255);
+        margin: 9px 15px;
+    }
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 40px;
 }
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+

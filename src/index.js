@@ -48,6 +48,21 @@ function cardBuilder(photoSet) {
   });
   galleryPart.innerHTML += galleryToInput;
   let gallery = new SimpleLightbox('.gallery a', { captionDelay: 250 });
+  gallery.refresh();
+
+  if (fetchMaker.pageNumber === 2) {
+    window.scrollBy({
+      top: 0,
+    });
+  } else if (fetchMaker.pageNumber > 2) {
+    const { height: cardHeight } = document
+      .querySelector(".gallery")
+      .firstElementChild.getBoundingClientRect();
+    window.scrollBy({
+      top: cardHeight * 2,
+      behavior: "smooth",
+    });
+  }
 }
 
 function photosCounter(initialData) {
@@ -63,6 +78,7 @@ function photosCounter(initialData) {
   if (currentPage === 1 && totalHits > 0) {
     Notify.success(`Hooray! We found ${totalHits} images.`)
   } else if (currentPage === 1 && totalHits === 0) {
+    loadMoreButton.style.display = "none";
     Notify.failure("Sorry, there are no images matching your search query. Please try again.")
   }
 
