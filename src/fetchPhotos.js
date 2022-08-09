@@ -1,6 +1,8 @@
 import axios from "axios";
 
-export default class FetchPhotos {
+export default class PhotoService {
+
+  static PIXABAY_KEY = "29078045-8c2db167d821a84d590b709ce"
 
   constructor() {
     this.searchRequest = "";
@@ -8,12 +10,23 @@ export default class FetchPhotos {
     this.cardsNumber = 40;
   }
 
-  newFetch = () => {
-    const PIXABAY_KEY = "29078045-8c2db167d821a84d590b709ce"
-    const defaultApiSettings = "image_type=photo&orientation=horizontal&safesearch=true"
-    const result = axios.get(`https://pixabay.com/api/?key=${PIXABAY_KEY}&q=${this.searchRequest}&${defaultApiSettings}&page=${this.pageNumber}&per_page=${this.cardsNumber}`);
-    result.then(() => this.pageNumber++);
-    return result;
+  newFetch = async () => {
+
+    const response = await axios.get(
+      `https://pixabay.com/api`, {
+      params: {
+        key: PhotoService.PIXABAY_KEY,
+        image_type: "photo",
+        orientation: "horizontal",
+        safesearch: true,
+        q: this.searchRequest,
+        page: this.pageNumber,
+        per_page: this.cardsNumber
+      }
+    });
+    this.pageNumber++;
+
+    return response;
   }
 
   resetPage() {

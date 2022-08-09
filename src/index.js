@@ -1,4 +1,4 @@
-import FetchPhotos from "./fetchPhotos.js";
+import PhotoService from "./fetchPhotos.js";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
@@ -9,7 +9,7 @@ const galleryPart = document.querySelector(".gallery");
 const loadMoreButton = document.querySelector(".load-more");
 loadMoreButton.style.display = "none";
 
-const fetchMaker = new FetchPhotos();
+const fetchMaker = new PhotoService();
 
 searchQueryForm.addEventListener("submit", onSubmit);
 loadMoreButton.addEventListener("click", fetchArticles);
@@ -24,9 +24,12 @@ function onSubmit(event) {
   event.currentTarget.reset();
 }
 
-function fetchArticles() {
-  fetchMaker.newFetch().then(res => cardBuilder(res.data));
+async function fetchArticles() {
+  const response = await fetchMaker.newFetch();
+
+  cardBuilder(response.data);
 }
+
 
 function cardBuilder(photoSet) {
   photosCounter(photoSet);
