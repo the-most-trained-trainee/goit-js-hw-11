@@ -13,7 +13,7 @@ export default class PhotoService {
   newFetch = async () => {
 
     const response = await axios.get(
-      `https://pixabay.com/api`, {
+      `https://pixabay.com/api/`, {
       params: {
         key: PhotoService.PIXABAY_KEY,
         image_type: "photo",
